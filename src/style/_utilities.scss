@@ -1,0 +1,13 @@
+@import "./_variables.scss";
+
+.bg-darker {
+	background-color: $color-dark !important;
+
+	.form-control {
+		background-color: inherit !important;
+	}
+
+	.form-select {
+		background-color: inherit !important;
+	}
+}
