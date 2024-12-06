@@ -9,3 +9,20 @@
 		box-shadow: none !important;
 	}
 }
+
+.wrapper-container {
+	max-width: 750px !important; /* Typical mobile device width */
+	margin: 0 auto !important; /* Center align */
+}
+
+.mt-relative {
+	margin-top: -10vh;
+	z-index: 2;
+
+	@media (max-height: 668px) {
+		margin-top: -8vh; /* Reduce the negative margin for smaller devices */
+	}
+	@media (min-height: 800px) {
+		margin-top: -15vh; /* Increase the negative margin for larger devices */
+	}
+}
