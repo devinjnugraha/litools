@@ -1,6 +1,6 @@
-import { Card, Col, Container, Row, Stack } from "react-bootstrap";
+import { Col, Row, Stack } from "react-bootstrap";
 import img from "../asset/img/logo192.png";
-import Cards from "./Cards";
+import Cards from "../component/Cards";
 
 export default function Homepage() {
 	return (

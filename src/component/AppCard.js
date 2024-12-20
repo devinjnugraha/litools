@@ -6,7 +6,7 @@ export default function AppCard({ title, subtitle, children, ...props }) {
 			<Card.Body>
 				{title && <Card.Title>{title}</Card.Title>}
 				{subtitle && <Card.Subtitle className="mb-2 text-muted">{subtitle}</Card.Subtitle>}
-				{children && <div>{children}</div>}
+				{children}
 			</Card.Body>
 		</Card>
 	);

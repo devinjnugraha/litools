@@ -1,13 +1,20 @@
 import { Card, Col, Row, Stack } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 export default function Cards() {
+	const navigate = useNavigate();
+
+	function handleRiskCalculatorClick() {
+		navigate("/risk-calculator");
+	}
+
 	return (
 		<Row>
 			<Col xs={6} className="mb-3">
-				<Card className="cursor-pointer">
+				<Card className="cursor-pointer" onClick={handleRiskCalculatorClick}>
 					<Card.Body>
 						<Stack>
-							<div>Reksa Dana</div>
+							<div>Position Calculator</div>
 							<img
 								src="https://app.bibit.id/static/media/icon-reksadana.fa98183b3c90648733fa95809e2ca7d4.svg"
 								alt=""

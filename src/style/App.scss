@@ -1,11 +1,17 @@
 .form-control,
-.form-select {
+.form-select,
+.input-group-text {
 	border: none !important; // Remove all borders
 	border-bottom: var(--bs-border-width) solid var(--bs-border-color) !important; // Add bottom border using variables
 	border-radius: 0rem !important; // Remove border radius
+	background-color: unset !important;
 
 	&:focus {
 		border-bottom: var(--bs-border-width) solid var(--bs-secondary) !important; // Add bottom border using variables
+		box-shadow: none !important;
+	}
+	&:focus + .input-group-text {
+		border-bottom: var(--bs-border-width) solid var(--bs-secondary) !important;
 		box-shadow: none !important;
 	}
 }

@@ -5,7 +5,7 @@ import { Stack } from "react-bootstrap";
 
 export default function AppNavbar() {
 	return (
-		<Navbar expand="lg" className=" sticky-top">
+		<Navbar expand="lg" className=" sticky-top bg-success-subtle">
 			<Container>
 				<Navbar.Brand href="/">
 					<Stack gap={2} direction="horizontal">
