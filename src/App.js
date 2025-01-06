@@ -7,26 +7,29 @@ import RiskCalculator from './page/RiskCalculator';
 import AveragePrice from './page/AveragePrice';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <AppLayout />,
-      children: [
-        {
-          index: true,
-          element: <Homepage />,
-        },
-        {
-          path: 'risk-calculator',
-          element: <RiskCalculator />,
-        },
-        {
-          path: 'average-price',
-          element: <AveragePrice />,
-        },
-      ],
-    },
-  ]);
+  const router = createBrowserRouter(
+    [
+      {
+        path: '/',
+        element: <AppLayout />,
+        children: [
+          {
+            index: true,
+            element: <Homepage />,
+          },
+          {
+            path: 'risk-calculator',
+            element: <RiskCalculator />,
+          },
+          {
+            path: 'average-price',
+            element: <AveragePrice />,
+          },
+        ],
+      },
+    ],
+    { basename: '/litools' }
+  );
 
   return <RouterProvider router={router} />;
 }
