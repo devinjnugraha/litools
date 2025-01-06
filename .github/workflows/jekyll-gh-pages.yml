@@ -1,4 +1,4 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+# Sample workflow for building and deploying a React site to GitHub Pages
 name: Deploy litools to GitHub Pages
 
 on:
@@ -28,15 +28,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          source: ./
-          destination: ./_site
+          node-version: 18 # Use the Node.js version compatible with your project
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build # Directory with the React build output
 
   # Deployment job
   deploy:
