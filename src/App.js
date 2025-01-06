@@ -28,7 +28,7 @@ function App() {
         ],
       },
     ],
-    { basename: '/litools' }
+    { basename: process.env.PUBLIC_URL }
   );
 
   return <RouterProvider router={router} />;

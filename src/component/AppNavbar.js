@@ -11,7 +11,7 @@ export default function AppNavbar() {
   return (
     <Navbar expand="lg" className={navbarClass}>
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href={process.env.PUBLIC_URL}>
           <Stack gap={2} direction="horizontal">
             <img src={img} height={30} alt="brandLogo" />
             <div className="fw-semibold">litools</div>
