@@ -1,51 +1,76 @@
-import { Form, InputGroup } from "react-bootstrap";
-import CurrencyInput from "react-currency-input-field";
+import { useState } from 'react';
+import { Form, InputGroup, Stack } from 'react-bootstrap';
+import CurrencyInput from 'react-currency-input-field';
+import { LOCALE } from '../config/common';
 
 export default function Input({
-	label,
-	inputType = "input",
-	type = "input",
-	options = [],
-	currency,
-	inputGroupText,
-	...props
+  label,
+  inputType = 'input',
+  type = 'input',
+  options = [],
+  currency,
+  inputGroupText,
+  extraLabel,
+  value: parentValue,
+  onChange: parentOnChange,
+  ...props
 }) {
-	return (
-		<Form.Group className="mb-3">
-			<Form.Label className="small text-muted mb-0 w-100">{label}</Form.Label>
+  const [innerValue, setInnerValue] = useState(null);
 
-			{/* inputType = input */}
-			{inputType === "input" && (
-				<InputGroup size="sm">
-					<Form.Control type={type} className="fw-semibold" {...props} />
-					{inputGroupText && <InputGroup.Text>{inputGroupText}</InputGroup.Text>}
-				</InputGroup>
-			)}
+  const isControlled = typeof parentValue !== undefined;
+  const value = isControlled ? parentValue : innerValue;
 
-			{/* inputType = select */}
-			{inputType === "select" && (
-				<InputGroup size="sm">
-					<Form.Select size="sm" className="fw-semibold" {...props}>
-						{options.map((option) => (
-							<option key={option.value} value={option.value}>
-								{option.label}
-							</option>
-						))}
-					</Form.Select>
-					{inputGroupText && <InputGroup.Text>{inputGroupText}</InputGroup.Text>}
-				</InputGroup>
-			)}
+  const handleChange = (e) => {
+    parentOnChange?.(e);
+    setInnerValue(e.target.value);
+  };
 
-			{/* inputType = currency */}
-			{inputType === "currency" && (
-				<InputGroup size="sm">
-					<CurrencyInput
-						intlConfig={{ locale: "id-ID", currency: currency }}
-						className="form-control fw-semibold"
-					/>
-					{inputGroupText && <InputGroup.Text>{inputGroupText}</InputGroup.Text>}
-				</InputGroup>
-			)}
-		</Form.Group>
-	);
+  const handleCurrencyInputChange = (value, name, values) => {
+    const e = { target: { value, name, values } };
+    parentOnChange?.(e);
+    setInnerValue(value);
+  };
+  return (
+    <Form.Group className="mb-3">
+      <Stack direction="horizontal" gap={2} className="justify-content-between">
+        <Form.Label className="small text-muted mb-0 w-100">{label}</Form.Label>
+        {extraLabel}
+      </Stack>
+
+      {/* inputType = input */}
+      {inputType === 'input' && (
+        <InputGroup size="sm">
+          <Form.Control type={type} className="fw-semibold" value={value} onChange={handleChange} {...props} />
+          {inputGroupText && <InputGroup.Text>{inputGroupText}</InputGroup.Text>}
+        </InputGroup>
+      )}
+
+      {/* inputType = select */}
+      {inputType === 'select' && (
+        <InputGroup size="sm">
+          <Form.Select size="sm" className="fw-semibold" value={value} onChange={handleChange} {...props}>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Form.Select>
+          {inputGroupText && <InputGroup.Text>{inputGroupText}</InputGroup.Text>}
+        </InputGroup>
+      )}
+
+      {/* inputType = currency */}
+      {inputType === 'currency' && (
+        <InputGroup size="sm">
+          <CurrencyInput
+            intlConfig={{ locale: LOCALE, currency: currency }}
+            className="form-control fw-semibold"
+            value={value}
+            onValueChange={handleCurrencyInputChange}
+          />
+          {inputGroupText && <InputGroup.Text>{inputGroupText}</InputGroup.Text>}
+        </InputGroup>
+      )}
+    </Form.Group>
+  );
 }
