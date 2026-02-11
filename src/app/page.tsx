@@ -2,6 +2,7 @@ import Hero from "@/components/hero";
 import { PencilRulerIcon } from "lucide-react";
 import Tools from "./tools";
 import NavbarHome from "@/components/navbar-home";
+import Footer from "@/components/footer";
 
 export default function Home() {
     return (
@@ -17,6 +18,7 @@ export default function Home() {
                 }
             />
             <Tools />
+            <Footer />
         </div>
     );
 }

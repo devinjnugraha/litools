@@ -91,37 +91,16 @@ export default function RiskClientPage() {
                         </div>
                     </Field>
                     <Field className="gap-1">
-                        <div className="flex justify-between items-center">
-                            <FieldLabel className="text-muted-foreground" htmlFor="capital">
-                                Total capital{" "}
-                                <InfoDrawer
-                                    title="Total Capital"
-                                    descriptions={[
-                                        "The total amount of funds available in your portfolio for investment purposes. It includes all cash and liquid assets that can be allocated to trades or investments. Total capital serves as the basis for calculating position sizes, risk levels, and overall portfolio management strategies.",
-                                    ]}
-                                />
-                            </FieldLabel>
-                            <div className="flex gap-1 overflow-x-auto no-scrollbar">
-                                {[
-                                    { label: "+100K", value: 100_000 },
-                                    { label: "+1M", value: 1_000_000 },
-                                    { label: "+5M", value: 5_000_000 },
-                                    { label: "+10M", value: 10_000_000 },
-                                    { label: "+50M", value: 50_000_000 },
-                                ].map((btn) => (
-                                    <Button
-                                        key={btn.label}
-                                        variant="outline"
-                                        size="sm"
-                                        className="h-5 px-2 text-[10px] rounded-full whitespace-nowrap"
-                                        onClick={() => handleAddCapital(btn.value)}
-                                    >
-                                        {btn.label}
-                                    </Button>
-                                ))}
-                            </div>
-                        </div>
-
+                        <FieldLabel className="text-muted-foreground" htmlFor="capital">
+                            Total capital{" "}
+                            <InfoDrawer
+                                title="Total Capital"
+                                descriptions={[
+                                    "The total amount of funds available in your portfolio for investment purposes. It includes all cash and liquid assets that can be allocated to trades or investments. Total capital serves as the basis for calculating position sizes, risk levels, and overall portfolio management strategies.",
+                                ]}
+                            />
+                        </FieldLabel>
+                        
                         <InputNumeric
                             id="capital"
                             mode="integer"
@@ -129,7 +108,27 @@ export default function RiskClientPage() {
                             onValueChange={setCapital}
                             className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                         />
+                        <div className="grid grid-cols-5 gap-1.5 pt-1">
+                            {[
+                                { label: "+100K", value: 100_000 },
+                                { label: "+1M", value: 1_000_000 },
+                                { label: "+5M", value: 5_000_000 },
+                                { label: "+10M", value: 10_000_000 },
+                                { label: "+50M", value: 50_000_000 },
+                            ].map((btn) => (
+                                <Button
+                                    key={btn.label}
+                                    variant="outline"
+                                    size={'sm'}
+                                    className="px-2 text-accent-foreground font-medium whitespace-nowrap rounded-md transition-all hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                                    onClick={() => handleAddCapital(btn.value)}
+                                >
+                                    {btn.label}
+                                </Button>
+                            ))}
+                        </div>
                     </Field>
+
                     <Field className="gap-1">
                         <FieldLabel className="text-muted-foreground" htmlFor="currentSharePrice">
                             Current share price

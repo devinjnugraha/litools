@@ -36,15 +36,22 @@ export function parseInput (
 
   const sanitized =
     mode === 'decimal'
-      ? input.replace(/[^0-9.]/g, '')
+      ? input.replace(/,/g, '.').replace(/[^0-9.]/g, '')
       : input.replace(/[^0-9]/g, '')
 
   if (!sanitized) return null
 
-  const num = Number(sanitized)
+  // If after replacing comma with dot we have multiple dots, only take the first part
+  // this is a safety measure if somehow the input bypassed isValidDecimalInput
+  const parts = sanitized.split('.')
+  const normalized = parts.length > 2 ? `${parts[0]}.${parts.slice(1).join('')}` : sanitized
+
+  const num = Number(normalized)
   return isNaN(num) ? null : num
 }
 
 export function isValidDecimalInput (value: string) {
-  return /^\d*(\.\d*)?$/.test(value)
+  // Allow numbers, one dot OR one comma, but not both at the same time in raw typing
+  // Or handle them interchangeably. Let's allow one separator (dot or comma).
+  return /^\d*([.,]\d*)?$/.test(value)
 }

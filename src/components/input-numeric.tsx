@@ -34,20 +34,22 @@ export function InputNumeric({ value, mode = "integer", onValueChange, className
     }, [display]);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        let input = e.target.value.replace(/,/g, "");
+        const rawInput = e.target.value;
         const currentSelectionStart = e.target.selectionStart || 0;
 
         if (mode === "decimal") {
-            if (!isValidDecimalInput(input)) return;
+            // Treat comma as dot for iOS compatibility
+            const normalizedInput = rawInput.replace(/,/g, ".");
+            if (!isValidDecimalInput(normalizedInput)) return;
 
-            setDisplay(input);
+            setDisplay(normalizedInput);
 
-            if (input === "" || input === ".") {
+            if (normalizedInput === "" || normalizedInput === ".") {
                 onValueChange?.(null);
                 return;
             }
 
-            const num = Number(input);
+            const num = Number(normalizedInput);
             if (!isNaN(num)) {
                 onValueChange?.(num);
             }
@@ -56,7 +58,7 @@ export function InputNumeric({ value, mode = "integer", onValueChange, className
 
         // integer mode
         // Logic to preserve cursor position for integer mode with commas
-        const digitsOnly = input.replace(/\D/g, "");
+        const digitsOnly = rawInput.replace(/\D/g, "");
 
         if (!digitsOnly) {
             setDisplay("");
@@ -118,6 +120,7 @@ export function InputNumeric({ value, mode = "integer", onValueChange, className
             value={display}
             onChange={handleChange}
             onBlur={handleBlur}
+            autoComplete="off"
         />
     );
 }
