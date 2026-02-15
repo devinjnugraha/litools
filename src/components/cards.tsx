@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { type ComponentType } from 'react';
-import { CircleGaugeIcon, ScaleIcon } from 'lucide-react';
+import { CircleGaugeIcon, ScaleIcon, LockIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
@@ -23,6 +23,11 @@ const tools: Tool[] = [
 		href: '/average-price',
 		Icon: ScaleIcon,
 	},
+    {
+        heading: 'Secret Message',
+        href: '/secret-message',
+        Icon: LockIcon,
+    },
 ];
 
 export default function Cards({ className }: { className?: string }) {

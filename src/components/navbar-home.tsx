@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ThemeToggle } from './theme-toggle';
 
 export default function NavbarHome() {
 	return (
@@ -9,6 +10,7 @@ export default function NavbarHome() {
 				<Link href="/" aria-label="Go to home">
 					<div className="font-semibold text-xl text-primary">litools</div>
 				</Link>
+                <ThemeToggle />
 			</div>
 		</nav>
 	);

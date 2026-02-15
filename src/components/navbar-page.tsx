@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ThemeToggle } from "./theme-toggle";
 
 export default function NavbarPage() {
     const router = useRouter();
@@ -21,9 +22,9 @@ export default function NavbarPage() {
                 <Link href="/" aria-label="Go to home">
                     <div className="font-semibold text-xl text-primary">litools</div>
                 </Link>
-                {/* <Button variant={"ghost"} size={"icon-sm"} onClick={handleBack}>
-                    <ChevronRightIcon className="size-8 text-primary" />
-                </Button> */}
+                <div className="absolute right-0">
+                    <ThemeToggle />
+                </div>
             </div>
         </nav>
     );

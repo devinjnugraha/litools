@@ -85,7 +85,6 @@ export default function RiskClientPage() {
                                 mode="decimal"
                                 value={riskTolerance}
                                 onValueChange={setRiskTolerance}
-                                className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                             />
                             <span className="absolute right-0 top-1 px-2 text-sm text-muted-foreground">%</span>
                         </div>
@@ -106,7 +105,6 @@ export default function RiskClientPage() {
                             mode="integer"
                             value={capital}
                             onValueChange={setCapital}
-                            className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                         />
                         <div className="grid grid-cols-5 gap-1.5 pt-1">
                             {[
@@ -138,7 +136,6 @@ export default function RiskClientPage() {
                             mode="integer"
                             value={currentPrice}
                             onValueChange={setCurrentPrice}
-                            className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                         />
                     </Field>
                     <Field className="gap-1">
@@ -151,7 +148,6 @@ export default function RiskClientPage() {
                                 mode="integer"
                                 value={stopLoss}
                                 onValueChange={setStopLoss}
-                                className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                             />
                             {debouncedCurrentPrice && debouncedStopLoss && (
                                 <span

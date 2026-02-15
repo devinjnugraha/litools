@@ -68,7 +68,6 @@ export default function AveragePriceClientPage() {
                                 mode="integer"
                                 value={currentAvgPrice}
                                 onValueChange={setCurrentAvgPrice}
-                                className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                             />
                         </Field>
                         <Field className="gap-1">
@@ -81,7 +80,6 @@ export default function AveragePriceClientPage() {
                                     mode="integer"
                                     value={sharesOwned}
                                     onValueChange={setSharesOwned}
-                                    className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                                 />
                                 <span className="absolute right-0 px-2">shares</span>
                             </div>
@@ -98,7 +96,6 @@ export default function AveragePriceClientPage() {
                                 mode="integer"
                                 value={buyPrice}
                                 onValueChange={setBuyPrice}
-                                className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                             />
                         </Field>
                         <Field className="gap-1">
@@ -111,7 +108,6 @@ export default function AveragePriceClientPage() {
                                     mode="integer"
                                     value={sharesToBuy}
                                     onValueChange={setSharesToBuy}
-                                    className="h-7 px-2 border-0 shadow-none border-b rounded-none focus:border-b-primary focus-visible:ring-0 focus:outline-none"
                                 />
                                 <span className="absolute right-0 px-2">shares</span>
                             </div>
